@@ -63,7 +63,14 @@ export class ItemService {
   }
 
   updateItem(item: any, editData: any): Observable<any> {
-    let data = {idDoc: item.id1, id: item.id, name: item.name, amount: item.amount, price: item.price, editData: editData};
+    if (editData.amount == 0) {
+      this.itemStatus = 1;
+    } if (editData.amount > 0 && editData.amount <= 10) {
+      this.itemStatus = 2;
+    } if (editData.amount > 10) {
+      this.itemStatus = 3;
+    }
+    let data = {idDoc: item.id1, id: item.id, name: item.name, image: this.fb, amount: item.amount, price: item.price, status: this.itemStatus, editData: editData};
     return this.httpClient.put(environment.endpoint + 'updateItem', data);
   }
   

@@ -200,7 +200,7 @@ export class TableclientComponent implements OnInit {
       console.log(this.itemFilter)
     } else {
       this.itemFilter = this.itemFilter.filter(res => {
-        return res.id.toLocaleLowerCase().match(id.toLocaleLowerCase());
+        return res.name.toLocaleLowerCase().match(id.toLocaleLowerCase());
       })
       console.log(this.itemFilter)
     }

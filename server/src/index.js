@@ -1,7 +1,7 @@
 const config = require("./config");
 const server = require("./server");
 const admin = require("firebase-admin");
-const serviceAccount = require("../frontend-subject-firebase-adminsdk-jpyhn-2abf5e9307.json");
+const serviceAccount = require("../frontend-subject-firebase-adminsdk-jpyhn-9516e5d1c7.json");
 const { query } = require("express");
 const databaseURL = "https://frontend-subject.firebaseio.com/";
 
@@ -57,7 +57,14 @@ server.get("/item/id", async (req, res) => {
 server.post("/createItem", async (req, res) => {
   const { id, name, amount, price, status, image } = req.body;
   const data = {
-    id: id,
+    type: id,
+    name: name,
+    image: image,
+    amount: amount,
+    price: price,
+    status: status
+  };
+  const data2 = {
     name: name,
     image: image,
     amount: amount,
@@ -67,6 +74,7 @@ server.post("/createItem", async (req, res) => {
   console.log(data);
   try {
     let doc = await admin.firestore().collection("tools").doc().set(data);
+    let doc1 = await admin.firestore().collection("types").doc(id).set(data2);
   } catch (error) {
     console.log(error);
   }
@@ -82,15 +90,15 @@ server.delete("/deleteItem", async (req, res) => {
 });
 
 server.put("/updateItem", async (req, res) => {
-  const {idDoc, id, name, amount, price, editData} = req.body;
+  const {idDoc, id, name, image, amount, price, status, editData} = req.body;
   try {
     await admin.firestore().collection("tools").doc(idDoc).update({
-      id: editData.id,
-      name:editData. name,
+      type: editData.id,
+      name: editData.name,
       // image: image,
       amount: editData.amount,
       price: editData.price,
-      // status: status
+      status: status
     });
   } catch (error) {
     console.log(error);

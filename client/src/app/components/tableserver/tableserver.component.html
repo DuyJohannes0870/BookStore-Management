@@ -4,10 +4,10 @@
         background-image: linear-gradient(180deg,#156 10%,#4266d1 100%);
         background-size: cover;" class="btn btn-primary" for="file"><i
             class="fas fa-download fa-sm text-white-50"></i></label>
-        <input style="width: 23%; margin-right: 0.5rem;" type="text" class="form-control" id="idProduct" formControlName="id"
-            placeholder="Enter id">
         <input style="width: 23%; margin-right: 0.5rem;" type="text" class="form-control" id="nameProduct" formControlName="name"
             placeholder="Enter name">
+        <input style="width: 23%; margin-right: 0.5rem;" type="text" class="form-control" id="idProduct" formControlName="id"
+            placeholder="Enter type">
         <input style="width: 23%; margin-right: 0.5rem;" type="number" class="form-control" id="amountProduct" formControlName="amount"
             placeholder="Enter amount">
         <input style="width: 23%; margin-right: 0.5rem;" type="number" class="form-control" id="priceProduct" formControlName="price"
@@ -24,7 +24,9 @@
 <!-- <div class="form-group col-12">
     <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
 </div> -->
-
+<div class="form-group col-12">
+    <input type="text" class="form-control" placeholder="Search for name item" aria-label="Search" [(ngModel)]="id" [ngModelOptions]="{standalone: true}" (input)="search()" />
+</div>
 
 
 <div class="row-01">
@@ -38,9 +40,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Image</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Type</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Price</th>
                             <th scope="col">Status</th>
@@ -50,9 +52,9 @@
 
                     <tbody>
                         <tr scope="row" *ngFor="let item of this.itemList | paginate: config ">
-                            <td><span class="item-info">{{item.id}}</span></td>
-                            <td><img style="height: 6rem; width: 6rem;" [src]='item.image'></td>
                             <td><span class="item-info">{{item.name}}</span></td>
+                            <td><img style="height: 6rem; width: 6rem;" [src]='item.image'></td>
+                            <td><span class="item-info">{{item.type}}</span></td>
                             <td><span class="item-info">{{item.amount}}</span></td>
                             <td><span class="item-info">{{item.price}} VND</span></td>
                             <td>

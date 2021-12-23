@@ -25,6 +25,9 @@ export class TableserverComponent implements OnInit {
   modalContent: undefined;
   tempData: any;
   // id: any;
+  id: string = "";
+  itemFilter: Item[]=[];
+
 
   constructor(
     private itemService: ItemService,
@@ -47,7 +50,8 @@ export class TableserverComponent implements OnInit {
     this.config.currentPage = event;
   }
   ngOnInit(): void {
-    this.getAllItem();
+    this.getAllItem(this.id);
+
 
     this.inputItem = this.formBuilder.group({
       id: ['', Validators.required],
@@ -64,11 +68,21 @@ export class TableserverComponent implements OnInit {
     })
   }
 
-  async getAllItem() {
+  async getAllItem(name: string) {
+    if(name == '') {
       (await this.itemService.getAllItem()).subscribe((data) => {
-      this.itemList = data;
-      // console.log(this.itemList);
+        this.itemList = data;
+      console.log(this.itemList);
     });
+  } else {
+    this.itemList = this.itemList.filter(res => {
+      return res.name.toLocaleLowerCase().match(name.toLocaleLowerCase());
+    })
+  }
+}
+
+  search() {
+    this.getAllItem(this.id)
   }
 
   // getId(item: any) {
@@ -121,7 +135,7 @@ export class TableserverComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
 
     // binding dữ liệu hiện tại vào modal, dựa trên formcontrol set dữ liệu default (hiển thị sẵn trong input)
-    this.editItem.controls.editId.setValue(tableRow.id)
+    this.editItem.controls.editId.setValue(tableRow.type)
     this.editItem.controls.editName.setValue(tableRow.name)
     this.editItem.controls.editAmount.setValue(tableRow.amount)
     this.editItem.controls.editPrice.setValue(tableRow.price)
