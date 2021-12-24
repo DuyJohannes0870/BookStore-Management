@@ -12,6 +12,7 @@ import { map, finalize } from 'rxjs/operators';
 })
 export class SaleService {
   public items!: Observable<any>;
+  receiveData: any;
 
 
   constructor(
@@ -25,4 +26,22 @@ export class SaleService {
   getAllItem(){
     return this.items;
   }
+
+  receiveItemData(item: any): Observable<any> {
+    this.receiveData = {id1: item.id1, id: item.id, name: item.name, image: item.image, amount: item.amount, price: item.price, status: item.status};
+    if(this.receiveData != ''){
+      console.log(this.receiveData , 'hello')
+    }
+    return this.receiveData;
+
+  }
+
+  holdData(){
+    return this.receiveData;
+  }
+
+
+
+
+
 }

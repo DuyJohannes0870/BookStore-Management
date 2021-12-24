@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
   countPage: number = 0;
   config: any;
   id: string = "";
+  modalContent: undefined;
+  tempData: any;
+  content: any;
+
 
 
   constructor(
@@ -62,6 +66,21 @@ export class HomeComponent implements OnInit {
   search() {
     this.getAllItem(this.id)
   }
+
+  getData(content: any, tableRow: any){
+    this.modalContent = tableRow;
+    // biến tạm để lưu lại dữ liệu của sản phẩm được click (để dùng cho hàm update)
+    this.tempData = tableRow;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+
+
+    // console.log(tableRow)
+  }
+
+  sendDataItem() {
+      this.saleService.receiveItemData(this.tempData);
+    }
+
   //Slider settings
   slideConfig = { "slidesToShow": 1, "slidesToScroll": 1 };
 }

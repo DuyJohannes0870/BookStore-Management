@@ -17,7 +17,7 @@ import { CartComponent } from './components/webshop/cart/cart.component';
 const routes: Routes = [
   {
     path: 'admin', component: AdminComponent,
-    canActivate: [AuthenticationGuard],
+    // canActivate: [AuthenticationGuard],
     children: [
       { path: 'tableclient', component: TableclientComponent },
       { path: 'tableserver', component: TableserverComponent },]

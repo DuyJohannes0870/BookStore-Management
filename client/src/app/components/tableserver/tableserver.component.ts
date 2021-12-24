@@ -126,6 +126,14 @@ export class TableserverComponent implements OnInit {
     this.itemService.onFileSelected(event);
   }
 
+  // getId(item: any) {
+  //   this.idDoc = item.id1;
+  //   this.db.collection("items").doc(item.id1).get();
+  //   // console.log(this.idDoc);
+
+  // }
+
+
   // hàm mở modal edit có truyền theo dữ liệu
   // tableRow: lấy dữ liệu hiện tại (tại sản phẩm được click)
   open(content: any, tableRow: any){
@@ -139,6 +147,8 @@ export class TableserverComponent implements OnInit {
     this.editItem.controls.editName.setValue(tableRow.name)
     this.editItem.controls.editAmount.setValue(tableRow.amount)
     this.editItem.controls.editPrice.setValue(tableRow.price)
+
+    console.log(tableRow)
   }
 
   alertGreen() {

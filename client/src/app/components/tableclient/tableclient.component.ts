@@ -91,7 +91,8 @@ export class TableclientComponent implements OnInit {
   getId(item: any) {
     this.idDoc = item.id1;
     this.afs.collection("items").doc(item.id1).get();
-    console.log(this.idDoc)
+    console.log(this.idDoc);
+
   }
 
   editItem() {
