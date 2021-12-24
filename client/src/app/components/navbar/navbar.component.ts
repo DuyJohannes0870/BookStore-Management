@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.authService.logout().then(res => {
-      this.router.navigate([''])
+      this.router.navigate(['/login'])
     }).catch(err => {
       console.log("Đăng nhập không thể thực thi!")
     })
