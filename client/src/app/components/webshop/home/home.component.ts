@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {SaleService} from '../../../services/sale.service'
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Item } from '../../../models/item.model'
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +12,55 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  items: Observable<any>;
+  itemList: any[] = [];
+  countPage: number = 0;
+  config: any;
+  id: string = "";
 
-  constructor() { }
+
+  constructor(
+    private saleService: SaleService,
+    private readonly db: AngularFirestore,
+    private formBuilder: FormBuilder,
+    private modalService: NgbModal
+  ) {
+    this.itemsCollection = db.collection<Item>('tools');
+    this.items = this.itemsCollection.valueChanges({ idField: 'id1' });
+
+    this.countPage=this.itemList.length;
+    this.config = {
+      itemsPerPage: 12,
+      currentPage: 1,
+      totalItems: this.countPage
+    }
+   }
+
+   pageChanged(event: any) {
+    this.config.currentPage = event;
+  }
 
   ngOnInit(): void {
+    this.getAllItem(this.id);
+
+  }
+
+  async getAllItem(name: string) {
+    if(name == '') {
+      (await this.saleService.getAllItem()).subscribe((data) => {
+        this.itemList = data;
+      console.log(this.itemList);
+    });
+  } else {
+    this.itemList = this.itemList.filter(res => {
+      return res.name.toLocaleLowerCase().match(name.toLocaleLowerCase());
+    })
+  }
+}
+
+  search() {
+    this.getAllItem(this.id)
   }
   //Slider settings
   slideConfig = { "slidesToShow": 1, "slidesToScroll": 1 };
