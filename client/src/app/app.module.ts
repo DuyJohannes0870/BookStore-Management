@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
-
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -28,6 +28,11 @@ import { TableserverComponent } from './components/tableserver/tableserver.compo
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/webshop/home/home.component';
+import { FooterComponent } from './components/webshop/footer/footer.component';
+import { HeaderComponent } from './components/webshop/header/header.component';
+import { CartComponent } from './components/webshop/cart/cart.component';
+import { ProductsingleComponent } from './components/webshop/productsingle/productsingle.component';
 
 
 
@@ -41,7 +46,12 @@ import { RegisterComponent } from './components/register/register.component';
     TableserverComponent,
     AdminComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    FooterComponent,
+    HeaderComponent,
+    CartComponent,
+    ProductsingleComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +63,8 @@ import { RegisterComponent } from './components/register/register.component';
     FormsModule,
     NgxPaginationModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

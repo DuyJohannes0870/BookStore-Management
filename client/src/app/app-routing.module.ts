@@ -7,7 +7,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
-
+import { ProductsingleComponent } from './components/webshop/productsingle/productsingle.component';
+import { HomeComponent } from './components/webshop/home/home.component';
+import { CartComponent } from './components/webshop/cart/cart.component';
 
 
 
@@ -20,8 +22,11 @@ const routes: Routes = [
       { path: 'tableclient', component: TableclientComponent },
       { path: 'tableserver', component: TableserverComponent },]
   },
-  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: '', component: HomeComponent},
+  { path:"product-single", component:ProductsingleComponent },
+  { path:"cart", component:CartComponent },
 
   { path: 'dashboardclient', loadChildren: () => import('./pages/dashboardclient/dashboardclient.module').then(m => m.DashboardclientModule) },
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
