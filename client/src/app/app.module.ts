@@ -33,6 +33,10 @@ import { FooterComponent } from './components/webshop/footer/footer.component';
 import { HeaderComponent } from './components/webshop/header/header.component';
 import { CartComponent } from './components/webshop/cart/cart.component';
 import { ProductsingleComponent } from './components/webshop/productsingle/productsingle.component';
+import { CheckoutComponent } from './components/webshop/checkout/checkout.component';
+import { ShopComponent } from './components/webshop/shop/shop.component';
+import { DashboardComponent } from './components/webshop/dashboard/dashboard.component';
+import { OrdersComponent } from './components/webshop/orders/orders.component';
 
 
 
@@ -51,7 +55,11 @@ import { ProductsingleComponent } from './components/webshop/productsingle/produ
     FooterComponent,
     HeaderComponent,
     CartComponent,
-    ProductsingleComponent
+    ProductsingleComponent,
+    CheckoutComponent,
+    ShopComponent,
+    DashboardComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
