@@ -22,7 +22,7 @@ import { OrdersComponent } from './components/webshop/orders/orders.component';
 const routes: Routes = [
   {
     path: 'admin', component: AdminComponent,
-    // canActivate: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard],
     children: [
       { path: 'tableclient', component: TableclientComponent },
       { path: 'tableserver', component: TableserverComponent },]
@@ -41,7 +41,7 @@ const routes: Routes = [
 
 
   { path: 'dashboardclient', loadChildren: () => import('./pages/dashboardclient/dashboardclient.module').then(m => m.DashboardclientModule) },
-  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
+  { path: 'login01', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
   { path: 'register01', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) }];
 
 @NgModule({
