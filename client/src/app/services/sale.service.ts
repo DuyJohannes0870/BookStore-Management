@@ -49,7 +49,6 @@ export class SaleService {
 
   getCart() {
     return this.fireStore.collection(`carts/${this.user.userName}/cart`).snapshotChanges();
-
   }
 
 

@@ -5,5 +5,15 @@ export interface Item {
     amount: Number; 
     price: Number; 
     image: string; 
-    status: Number
+    status: Number;
+    type:string;
+}
+
+export interface Cart {
+    idDoc: string;
+    name: string; 
+    amount: number; 
+    price: number; 
+    image: string; 
+    type: string;
 }

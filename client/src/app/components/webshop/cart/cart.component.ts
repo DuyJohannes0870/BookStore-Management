@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SaleService} from '../../../services/sale.service'
-
+import { Cart } from '../../../models/item.model'
 
 @Component({
   selector: 'app-cart',
@@ -9,14 +9,29 @@ import {SaleService} from '../../../services/sale.service'
 })
 export class CartComponent implements OnInit {
 
-  cart: any[] = []
 
   constructor(
-    private sale: SaleService,
+    private sale: SaleService
     
   ) { }
-
-  ngOnInit(): void {
+  public carts: Cart[] = [];
+  ngOnInit() {
+    this.sale.getCart().subscribe((cart:any)=>{
+      cart.map((item:any)=>{
+        // this.cart.push(item.payload.doc._delegate._document.data.value.mapValue.fields)
+        const mapItem = item.payload.doc._delegate._document.data.value.mapValue.fields
+        let _item: Cart = {
+          idDoc: mapItem.idDoc.stringValue,
+          name: mapItem.name.stringValue,
+          image: mapItem.image.stringValue,
+          amount: parseInt(mapItem.amount.integerValue),
+          price: parseInt(mapItem.price.integerValue),
+          type: mapItem.type.stringValue
+        }
+        this.carts.push(_item)
+        console.log(this.carts)
+      })
+    })
   }
 
 }
