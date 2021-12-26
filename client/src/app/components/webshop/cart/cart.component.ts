@@ -18,7 +18,6 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.sale.getCart().subscribe((cart:any)=>{
       cart.map((item:any)=>{
-        // this.cart.push(item.payload.doc._delegate._document.data.value.mapValue.fields)
         const mapItem = item.payload.doc._delegate._document.data.value.mapValue.fields
         let _item: Cart = {
           idDoc: mapItem.idDoc.stringValue,

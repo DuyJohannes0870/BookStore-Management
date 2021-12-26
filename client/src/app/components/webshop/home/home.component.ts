@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
   modalContent: undefined;
   tempData: any;
   content: any;
+  item: any;
+  public itemReceive: any;
+  amount: any;
 
 
 
@@ -28,7 +31,7 @@ export class HomeComponent implements OnInit {
     private saleService: SaleService,
     private readonly db: AngularFirestore,
     private formBuilder: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
   ) {
     this.itemsCollection = db.collection<Item>('tools');
     this.items = this.itemsCollection.valueChanges({ idField: 'id1' });
@@ -47,6 +50,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllItem(this.id);
+    
 
   }
 
@@ -83,4 +87,6 @@ export class HomeComponent implements OnInit {
 
   //Slider settings
   slideConfig = { "slidesToShow": 1, "slidesToScroll": 1 };
+
+  
 }
