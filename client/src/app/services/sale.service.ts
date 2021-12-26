@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Item } from '../models/item.model';
 import { map, finalize } from 'rxjs/operators';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class SaleService {
   constructor(
     public fireStore: AngularFirestore,
     private httpClient: HttpClient,
-    private fireStorage: AngularFireStorage
+    private fireStorage: AngularFireStorage,
+    private user: UserService
   ) { 
     this.items = fireStore.collection<any>('tools').valueChanges({ idField: 'id1' });
   }
@@ -28,7 +30,7 @@ export class SaleService {
   }
 
   receiveItemData(item: any): Observable<any> {
-    this.receiveData = {id1: item.id1, id: item.id, name: item.name, image: item.image, amount: item.amount, price: item.price, status: item.status};
+    this.receiveData = {id1: item.id1, type: item.type, name: item.name, image: item.image, amount: item.amount, price: item.price, status: item.status};
     if(this.receiveData != ''){
       console.log(this.receiveData , 'hello')
     }
@@ -40,7 +42,15 @@ export class SaleService {
     return this.receiveData;
   }
 
+  //Add to Carts
+  addToCart(data: any) {
+    return this.fireStore.collection(`carts/${this.user.userName}/cart`).add(data);
+  }
 
+  getCart() {
+    return this.fireStore.collection(`carts/${this.user.userName}/cart`).snapshotChanges();
+
+  }
 
 
 

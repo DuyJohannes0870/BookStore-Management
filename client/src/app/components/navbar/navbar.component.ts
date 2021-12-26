@@ -21,8 +21,8 @@ export class NavbarComponent implements OnInit {
     private router:Router,
     ) { 
     this.user.getUserInfo()
-      .then(user=> this.displayName = user.displayName!=null? user.displayName: user.email);	
-    console.log(this.displayName);		  
+      .then(user=> this.displayName = user.displayName!=null? user.displayName: user.email);
+      console.log(this.displayName);		  
   }
 
   public userInfo:any

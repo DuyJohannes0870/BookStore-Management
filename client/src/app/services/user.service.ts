@@ -8,6 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class UserService {
+  userName: any;
 
   constructor(
     public db: AngularFirestore,
@@ -25,4 +26,13 @@ export class UserService {
       })
     })
   }
+
+  userRender(){
+    console.log(this.userName, 'testUserName');
+    return this.userName;
+  }
+
+
 }
+
+
