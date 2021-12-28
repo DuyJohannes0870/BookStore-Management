@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Item } from '../models/item.model';
+import { Cart, Item } from '../models/item.model';
 import { map, finalize } from 'rxjs/operators';
 import { UserService } from './user.service';
 
@@ -21,7 +21,7 @@ export class SaleService {
     private httpClient: HttpClient,
     private fireStorage: AngularFireStorage,
     private user: UserService
-  ) { 
+  ) {
     this.items = fireStore.collection<any>('tools').valueChanges({ idField: 'id1' });
   }
 
@@ -44,13 +44,25 @@ export class SaleService {
 
   //Add to Carts
   addToCart(data: any) {
-    return this.fireStore.collection(`carts/${this.user.userName}/cart`).add(data);
+    const id = Date.now().toString()
+    const _cart: Cart = {
+      ...data,
+      id: id
+    }
+    return this.fireStore.collection(`carts/${this.user.userName}/cart`).doc(id).set(_cart)
+  }
+
+  delete(id:string){
+    return this.fireStore.collection(`carts/${this.user.userName}/cart`).doc(id).delete()
   }
 
   getCart() {
+    console.log(this.user.userName)
     return this.fireStore.collection(`carts/${this.user.userName}/cart`).snapshotChanges();
   }
 
-
+  updateCart(itemId: string, cart: Cart){
+    return this.fireStore.collection(`carts/${this.user.userName}/cart`).doc(itemId).update(cart);
+  }
 
 }

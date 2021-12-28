@@ -58,21 +58,25 @@
                                         {{cart.type}}
                                     </td>
                                     <td class="product-price" data-title="Price">
-                                        {{cart.price}}
+                                        {{cart.price | number}}
                                     </td>
                                     <td class="product-quantity" data-title="Quantity">
                                         <div class="quantity">
                                             <label class="sr-only">Quantity</label>
-                                            <input value={{cart.amount}} type="number" id="qty"
-                                                class="input-text qty text" step="1" min="0" max="9" value="1"
-                                                title="Qty" size="4" #amount [(ngModel)]="cart.amount">
+                                          <input
+                                            type="number" id="qty"
+                                            class="input-text qty text" step="1" min="0" max="100"
+                                            [(ngModel)]="cart.amount"
+                                            (click)="changeQuantity(cart)"
+                                            [ngModelOptions]="{standalone: true}"
+                                            title="Qty">
                                         </div>
                                     </td>
-                                    <td class="product-subtotal" data-title="Total">
-                                        {{(cart.price * cart.amount) | currency}}
+                                    <td  data-title="Total">
+                                        {{(cart.price * cart.amount) | number}}
                                     </td>
                                     <td class="product-remove" data-title="Remove">
-                                        <a href="#" class="remove" aria-label="Remove this item" data-product_id="30"
+                                        <a style="cursor: pointer;" (click)="delete(cart.id)" class="remove" aria-label="Remove this item" data-product_id="30"
                                             data-product_sku="">×</a>
                                     </td>
                                 </tr>
@@ -119,7 +123,7 @@
                         </li>
                         <li class="d-flex justify-content-between pb-2">
                             <h5>Total</h5>
-                            <span>$90.00</span>
+                            <span>${{total | number}}</span>
                         </li>
 
                     </ul>
