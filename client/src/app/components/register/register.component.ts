@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       this.auth.registerWithEmailPassword(this.email, this.password)
         .then(() => {
           alert('Your account has been created!');
-          this.router.navigate(['/']);
+          this.router.navigate(['/admin/tableclient']);
         })
         .catch((err) => {
           this.error = err;

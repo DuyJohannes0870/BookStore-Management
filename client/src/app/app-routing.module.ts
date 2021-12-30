@@ -9,15 +9,15 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { ProductsingleComponent } from './components/webshop/productsingle/productsingle.component';
-import { HomeComponent } from './components/webshop/home/home.component';
+import { HomeshopComponent } from './components/webshop/homeshop/homeshop.component';
 import { CartComponent } from './components/webshop/cart/cart.component';
 import { CheckoutComponent } from './components/webshop/checkout/checkout.component';
 import { ShopComponent } from './components/webshop/shop/shop.component';
 import { DashboardComponent } from './components/webshop/dashboard/dashboard.component';
 import { OrdersComponent } from './components/webshop/orders/orders.component';
-
-
-
+import { LoginshopComponent } from './components/webshop/loginshop/loginshop.component';
+import { SignupComponent } from './components/webshop/signup/signup.component';
+import { ForgotPasswordComponent } from './components/webshop/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -29,13 +29,17 @@ const routes: Routes = [
   },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: '', component: HomeComponent},
+  {path: 'homeshop', component: HomeshopComponent},
   { path:"product-single", component:ProductsingleComponent },
   { path:"cart", component:CartComponent },
   { path:"checkout", component:CheckoutComponent },
   { path:"shop", component:ShopComponent },
   { path:"dashboard", component:DashboardComponent },
   { path:"orders", component:OrdersComponent },
+  { path:"loginshop", component:LoginshopComponent },
+  { path:"signup", component:SignupComponent },
+  { path:"forgot-password", component:ForgotPasswordComponent },
+  
 
 
 

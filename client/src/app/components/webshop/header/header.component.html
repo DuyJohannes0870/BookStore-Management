@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar" style="box-shadow: 0 7px 0 0 rgba(0, 0, 0, .1);">
+<nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar"
+  style="box-shadow: 0 7px 0 0 rgba(0, 0, 0, .1);">
   <div class="container">
-    <a class="navbar-brand font-weight-bold" routerLink="/">Book Store</a>
+    <a class="navbar-brand font-weight-bold" routerLink="/homeshop">Book Store</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
       aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,28 +11,12 @@
     <div class="collapse navbar-collapse " id="main-navbar">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home </a>
+          <a class="nav-link" routerLink="/homeshop">Home </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="#">About Us</a>
         </li>
-        <!-- Pages -->
-        <li class="nav-item dropdown dropdown-slide">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-delay="350"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Pages.
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Blog Single</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">404 Page</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </li><!-- /Pages -->
-        <!-- / Blog -->
 
         <li class="nav-item dropdown dropdown-slide">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-delay="350"
@@ -40,10 +25,8 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
             <li><a routerLink="/shop">Shop</a></li>
-            <li><a href="#">Product Details</a></li>
             <li><a routerLink="/checkout">Checkout</a></li>
             <li><a routerLink="/cart">Cart</a></li>
-            <li><a href="#">Confirmation</a></li>
           </ul>
         </li><!-- / Blog -->
 
@@ -56,12 +39,9 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
             <li><a routerLink="/dashboard">Dahsboard</a></li>
             <li><a routerLink="/orders">Orders</a></li>
-            <li><a href="#">Downloads</a></li>
-            <li><a href="#">Address</a></li>
-            <li><a href="#">Profile Details</a></li>
-            <li><a href="#">Login Page</a></li>
-            <li><a href="#">SignUp Page</a></li>
-            <li><a href="#">Forgot Password</a></li>
+            <li><a routerLink="/loginshop">Login Page</a></li>
+            <li><a routerLink="/signup">SignUp Page</a></li>
+            <li><a routerLink="/forgot-password">Forgot Password</a></li>
           </ul>
         </li><!-- / Account -->
 
@@ -108,7 +88,43 @@
           </div>
         </div>
       </li>
-      <li class="list-inline-item"><a href="#"><i class="tf-ion-ios-person mr-3"></i></a></li>
+
+      <li class="dropdown cart-nav dropdown-slide list-inline-item">
+        <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown"><i
+            class="tf-ion-ios-person mr-3"></i>
+        </a>
+
+        <div class="dropdown-menu cart-dropdown">
+          <!-- Person Item -->
+          <div class="media">
+            <div *ngIf="userInfo.photoURL==null">
+              <img class="media-object img- mr-3" src="../../../../assets/user.jpg" alt="image" />
+            </div>
+            <div *ngIf="userInfo.photoURL">
+              <img class="media-object img- mr-3" [src]="userInfo.photoURL" alt="image" />
+            </div>
+            
+      
+            <div class="media-body">
+              <div class="cart-price">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" *ngIf="displayName"
+                  style="font-size: 15px;">Xin chào!
+                </span>
+              </div>
+              <h6>{{userInfo.displayName}}</h6>
+              <h6>{{userInfo.email}}</h6>
+            </div>
+          </div>
+
+          <div class="cart-summary">
+            <div class="text-center cart-buttons mt-3">
+              <a (click)="logout()" class="btn btn-small btn-transparent btn-block">Logout</a>
+            </div>
+          </div>
+        </div>
+
+      </li>
+
     </ul>
   </div>
 </nav>

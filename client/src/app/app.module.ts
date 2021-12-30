@@ -28,7 +28,6 @@ import { TableserverComponent } from './components/tableserver/tableserver.compo
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/webshop/home/home.component';
 import { FooterComponent } from './components/webshop/footer/footer.component';
 import { HeaderComponent } from './components/webshop/header/header.component';
 import { CartComponent } from './components/webshop/cart/cart.component';
@@ -37,6 +36,10 @@ import { CheckoutComponent } from './components/webshop/checkout/checkout.compon
 import { ShopComponent } from './components/webshop/shop/shop.component';
 import { DashboardComponent } from './components/webshop/dashboard/dashboard.component';
 import { OrdersComponent } from './components/webshop/orders/orders.component';
+import { LoginshopComponent } from './components/webshop/loginshop/loginshop.component';
+import { SignupComponent } from './components/webshop/signup/signup.component';
+import { ForgotPasswordComponent } from './components/webshop/forgot-password/forgot-password.component';
+import { HomeshopComponent } from './components/webshop/homeshop/homeshop.component';
 
 
 
@@ -51,7 +54,6 @@ import { OrdersComponent } from './components/webshop/orders/orders.component';
     AdminComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
     FooterComponent,
     HeaderComponent,
     CartComponent,
@@ -60,6 +62,10 @@ import { OrdersComponent } from './components/webshop/orders/orders.component';
     ShopComponent,
     DashboardComponent,
     OrdersComponent,
+    LoginshopComponent,
+    SignupComponent,
+    ForgotPasswordComponent,
+    HomeshopComponent,
   ],
   imports: [
     BrowserModule,

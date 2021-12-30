@@ -46,6 +46,15 @@ export class AuthService {
     }
   }
 
+  resetPassword(email: string) {
+    return this.auth.sendPasswordResetEmail(email)
+      .then(() => console.log('sent Password Reset Email!'))
+      .catch((error) => {
+        console.log(error)
+        throw error
+      })
+  }
+
   async loginWithEmailPassword(email: any, password: any) {
     try {
       const user = await this.auth.signInWithEmailAndPassword(email, password);

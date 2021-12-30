@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           })
           .catch((err) => {
             this.error = err;
-            this.Router.navigate(['/']);
+            this.Router.navigate(['/login']);
           });
       // }
   }

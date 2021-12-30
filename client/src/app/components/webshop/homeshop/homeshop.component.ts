@@ -7,11 +7,11 @@ import { Item } from '../../../models/item.model'
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-homeshop',
+  templateUrl: './homeshop.component.html',
+  styleUrls: ['./homeshop.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeshopComponent implements OnInit {
   private itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<any>;
   itemList: any[] = [];

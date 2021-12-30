@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
     private sale: SaleService
   ) {
     this.user.getUserInfo()
-      .then(user => this.displayName = user.displayName != null ? user.displayName : user.email);
-    console.log(this.displayName);
+      .then(user=> this.displayName = user.displayName!=null? user.displayName: user.email);
+      console.log(this.displayName);
   }
 
   public userInfo: any;
@@ -35,9 +35,9 @@ export class HeaderComponent implements OnInit {
     this.auth.authState.subscribe((auth) => {
       if (auth) {
         this.userInfo = auth;
-        this.user.userName = auth.email;
+        this.user.userName = auth.email
       }
-    });
+    })
 
     this.sale.getCart().subscribe((cart: any) => {
       this.carts = []
@@ -63,5 +63,14 @@ export class HeaderComponent implements OnInit {
   delete(id: string) {
     this.sale.delete(id)
   }
+
+  logout() {
+    this.authService.logout().then(res => {
+      this.router.navigate(['/loginshop'])
+    }).catch(err => {
+      console.log("Đăng xuất không thể thực thi!")
+    })
+  }
+  
 
 }
