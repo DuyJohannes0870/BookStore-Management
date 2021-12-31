@@ -28,7 +28,7 @@ export class LoginshopComponent implements OnInit {
   }
   loginWithGoogle() {
     this.authService.loginWithGmail().then(res => {
-      this.Router.navigate(['/homeshop'])
+      this.Router.navigate(['/'])
     }).catch(err => {
       console.log("Đăng nhập không thể thực thi!")
     })
@@ -38,7 +38,7 @@ export class LoginshopComponent implements OnInit {
 
     this.authService.loginWithEmailPassword(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
       .then(() => {
-        this.Router.navigate(['/homeshop']);
+        this.Router.navigate(['/']);
       })
       .catch((err) => {
         this.error = err;

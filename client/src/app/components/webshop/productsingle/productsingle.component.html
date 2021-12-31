@@ -10,7 +10,7 @@
                         god day multiply you’ll which</p>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent justify-content-center">
-                            <li class="breadcrumb-item"><a routerLink="/homeshop">Home</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Product Single</li>
                         </ol>
                     </nav>
@@ -66,29 +66,22 @@
                         doloremque aut deserunt commodi quis. Totam a consequatur beatae nostrum, earum consequuntur?
                         Eveniet consequatur ipsum dicta recusandae.
                     </p>
-                    <form class="cart" action="#" method="post">
+                    <form *ngIf="displayName" class="cart" action="#" method="post">
                         <div class="quantity d-flex align-items-center">
-                            <input type="number" value="1" id="#" class="input-text qty text form-control w-25 mr-3" step="1"
-                                min="1" max="9" name="quantity" title="Qty" size="4" #amount >
+                            <input type="number" value="1" id="#" class="input-text qty text form-control w-25 mr-3"
+                                step="1" min="1" max="9" name="quantity" title="Qty" size="4" #amount>
                             <a class="btn btn-main btn-small" (click)="addToCart(amount.value)">Add to cart</a>
                         </div>
                     </form>
-
-                    <!-- <div class="color-swatches mt-4 d-flex align-items-center">
-                        <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <a routerLink="/product-single" class="bg-info"></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a routerLink="/product-single" class="bg-dark"></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a routerLink="/product-single" class="bg-danger"></a>
-                            </li>
-                        </ul>
-                    </div> -->
+                    <form *ngIf="!displayName" class="cart" action="#" method="post">
+                        <div class="quantity d-flex align-items-center">
+                            <input type="number" value="1" id="#" class="input-text qty text form-control w-25 mr-3"
+                                step="1" min="1" max="9" name="quantity" title="Qty" size="4" #amount>
+                            <a class="btn btn-main btn-small" routerLink="/loginshop">Add to cart</a>
+                        </div>
+                    </form>
                     
+
                     <div class="products-meta mt-4">
                         <div class="product-category d-flex align-items-center">
                             <span class="font-weight-bold text-capitalize product-meta-title">Type :</span>
@@ -229,102 +222,5 @@
         </div>
     </div>
 </section>
-<section class="products related-products section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="title text-center">
-                    <h2>You may like this</h2>
-                    <p>The best Online sales to shop these weekend</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <div class="product">
-                    <div class="product-wrap">
-                        <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                src="assets/images/322.jpg" alt="product-img" /></a>
-                        <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                src="assets/images/444.jpg" alt="product-img" /></a>
-                    </div>
-                    <span class="onsale">Sale</span>
-                    <div class="product-hover-overlay">
-                        <a href="#"><i class="tf-ion-android-cart"></i></a>
-                        <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Kirby Shirt</a></h2>
-                        <span class="price">
-                            $329.10
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6">
-                <div class="product">
-                    <div class="product-wrap">
-                        <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                src="assets/images/111.jpg" alt="product-img" /></a>
-                        <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                src="assets/images/222.jpg" alt="product-img" /></a>
-                    </div>
-                    <span class="onsale">Sale</span>
-                    <div class="product-hover-overlay">
-                        <a href="#"><i class="tf-ion-android-cart"></i></a>
-                        <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Kirby Shirt</a></h2>
-                        <span class="price">
-                            $329.10
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6">
-                <div class="product">
-                    <div class="product-wrap">
-                        <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                src="assets/images/111.jpg" alt="product-img" /></a>
-                        <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                src="assets/images/322.jpg" alt="product-img" /></a>
-                    </div>
-                    <span class="onsale">Sale</span>
-                    <div class="product-hover-overlay">
-                        <a href="#"><i class="tf-ion-android-cart"></i></a>
-                        <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Kirby Shirt</a></h2>
-                        <span class="price">
-                            $329.10
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6">
-                <div class="product">
-                    <div class="product-wrap">
-                        <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
-                                src="assets/images/444.jpg" alt="product-img" /></a>
-                        <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
-                                src="assets/images/222.jpg" alt="product-img" /></a>
-                    </div>
-                    <span class="onsale">Sale</span>
-                    <div class="product-hover-overlay">
-                        <a href="#"><i class="tf-ion-android-cart"></i></a>
-                        <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-title h5 mb-0"><a routerLink="/product-single">Kirby Shirt</a></h2>
-                        <span class="price">
-                            $329.10
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <app-footer></app-footer>

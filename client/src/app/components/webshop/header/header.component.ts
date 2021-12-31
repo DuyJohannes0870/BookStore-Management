@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
     private sale: SaleService
   ) {
     this.user.getUserInfo()
-      .then(user=> this.displayName = user.displayName!=null? user.displayName: user.email);
-      console.log(this.displayName);
+      .then(user => this.displayName = user.displayName != null ? user.displayName : user.email);
+    console.log(this.displayName);
   }
 
   public userInfo: any;
@@ -71,6 +71,6 @@ export class HeaderComponent implements OnInit {
       console.log("Đăng xuất không thể thực thi!")
     })
   }
-  
+
 
 }

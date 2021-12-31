@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
     this.auth.registerWithEmailPassword(this.email, this.password)
       .then(() => {
         alert('Your account has been created!');
-        this.router.navigate(['/homeshop']);
+        this.router.navigate(['/']);
       })
       .catch((err) => {
         this.error = err;
